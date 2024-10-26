@@ -90,7 +90,7 @@ This task focuses on basic user-related actions such as registering a new user, 
         "hashedPassword": "$2a$10$vYWBxACqEIPeoT0O5b0faOHp4ITAHSBvoHDzBePW7tPqzpvqKLi6G"
     }
     ```
-    The accountNumber must be created and assigned to the account automatically by the app and be a UUID.
+    The accountNumber must be created and assigned to the account automatically by the com.hackathon.bankingapp.application and be a UUID.
     
     Checks should include:
     - No empty fields.
@@ -325,7 +325,7 @@ All transactions should require a JWT.
         }
     ]
     ```
-    The types of transactions that must be supported by the app are:
+    The types of transactions that must be supported by the com.hackathon.bankingapp.application are:
     - CASH_WITHDRAWAL
     - CASH_DEPOSIT
     - CASH_TRANSFER
@@ -676,9 +676,9 @@ In this case, the challenge will be evaluated on 2000 (1600 for tasks and 400 fo
 
 ## ❓ Additional information
 
-**Q1: Can I change anything in the app?**
+**Q1: Can I change anything in the com.hackathon.bankingapp.application?**
 
-A1: Yes, as it is a hackathon and the app is dockerised, you are free to modify anything within the project.
+A1: Yes, as it is a hackathon and the com.hackathon.bankingapp.application is dockerised, you are free to modify anything within the project.
 
 **Q2: Can I add resources that are not in pom.xml?**
 
