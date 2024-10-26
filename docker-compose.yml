@@ -20,15 +20,15 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: bankingapp             
-      MYSQL_PASSWORD: root                   
-      MYSQL_ROOT_PASSWORD: root              
+      MYSQL_DATABASE: bankingapp
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"                          
+      - "3306:3306"
     networks:
       - finservice_network
     restart: always
-    
+
   smtp:
     image: mailhog/mailhog
     container_name: smtp
