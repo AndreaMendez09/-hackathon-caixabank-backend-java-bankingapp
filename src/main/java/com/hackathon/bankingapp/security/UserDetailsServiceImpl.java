@@ -1,7 +1,7 @@
-package com.hackathon.bankingapp.Security;
+package com.hackathon.bankingapp.security;
 
 import com.hackathon.bankingapp.DTO.UserDTO;
-import com.hackathon.bankingapp.Repositories.UserRepository;
+import com.hackathon.bankingapp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

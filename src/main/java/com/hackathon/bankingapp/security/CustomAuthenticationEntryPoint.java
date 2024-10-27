@@ -1,4 +1,4 @@
-package com.hackathon.bankingapp.Security;
+package com.hackathon.bankingapp.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

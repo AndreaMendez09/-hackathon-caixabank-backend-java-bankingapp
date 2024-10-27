@@ -1,6 +1,6 @@
 package com.hackathon.bankingapp.controllers;
 
-import com.hackathon.bankingapp.Services.UserRegistrationService;
+import com.hackathon.bankingapp.services.UserRegistrationService;
 import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

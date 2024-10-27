@@ -1,10 +1,10 @@
-package com.hackathon.bankingapp.Services;
+package com.hackathon.bankingapp.services;
 
-import com.hackathon.bankingapp.Exceptions.UserAlreadyExistsException;
-import com.hackathon.bankingapp.Mappers.UserMapper;
+import com.hackathon.bankingapp.exceptions.UserAlreadyExistsException;
+import com.hackathon.bankingapp.mappers.UserMapper;
 import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
 import com.hackathon.bankingapp.Entities.api.res.UserRegistrationRes;
-import com.hackathon.bankingapp.Repositories.UserRepository;
+import com.hackathon.bankingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +23,10 @@ public class UserRegistrationService {
             throw new IllegalArgumentException("No empty fields allowed");
         }
 
+        if (!request.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            throw new IllegalArgumentException("Invalid email format");
+        }
+
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new UserAlreadyExistsException("Email already exists");
         }
@@ -30,6 +34,7 @@ public class UserRegistrationService {
         if (userRepository.existsByPhoneNumber(request.getPhoneNumber())) {
             throw new UserAlreadyExistsException("Phone number already exists");
         }
+
         request.setPassword(passwordEncoder.encode(request.getPassword()));
         var userDto = userMapper.toEntity(request);
 

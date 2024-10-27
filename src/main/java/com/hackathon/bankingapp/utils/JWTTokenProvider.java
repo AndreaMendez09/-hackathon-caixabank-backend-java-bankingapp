@@ -1,5 +1,6 @@
-package com.hackathon.bankingapp.Utils;
+package com.hackathon.bankingapp.utils;
 
+import com.hackathon.bankingapp.DTO.UserDTO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -7,15 +8,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
 import java.util.Date;
 
 @Component
 @RequiredArgsConstructor
-public class JWTUtils {
+public class JWTTokenProvider {
 
     @Value("${jwt.secret}")
     private String jwtSecret;
@@ -23,9 +22,9 @@ public class JWTUtils {
     @Value("${jwt.expiration}")
     private long jwtExpirationMs;
 
-    public String generateToken(String accountNumber) {
+    public String generateToken(UserDTO user) {
         return Jwts.builder()
-                .setSubject(accountNumber)
+                .setSubject(user.getAccountNumber().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
