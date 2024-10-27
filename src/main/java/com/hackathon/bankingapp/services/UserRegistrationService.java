@@ -3,7 +3,7 @@ package com.hackathon.bankingapp.services;
 import com.hackathon.bankingapp.exceptions.UserAlreadyExistsException;
 import com.hackathon.bankingapp.mappers.UserMapper;
 import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
-import com.hackathon.bankingapp.Entities.api.res.UserRegistrationRes;
+import com.hackathon.bankingapp.Entities.api.res.UserInfoRes;
 import com.hackathon.bankingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class UserRegistrationService {
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
-    public UserRegistrationRes registerUser(UserRegistrationReq request) {
+    public UserInfoRes registerUser(UserRegistrationReq request) {
         if (request.getName() == null || request.getEmail() == null || request.getPassword() == null
                 || request.getPhoneNumber() == null) {
             throw new IllegalArgumentException("No empty fields allowed");

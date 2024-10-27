@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @NoArgsConstructor
-public class UserRegistrationRes {
+public class UserInfoRes {
     private String name;
     private String email;
     private String phoneNumber;

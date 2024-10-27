@@ -2,7 +2,7 @@ package com.hackathon.bankingapp.services;
 
 import com.hackathon.bankingapp.DTO.UserDTO;
 import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
-import com.hackathon.bankingapp.Entities.api.res.UserRegistrationRes;
+import com.hackathon.bankingapp.Entities.api.res.UserInfoRes;
 import com.hackathon.bankingapp.exceptions.UserAlreadyExistsException;
 import com.hackathon.bankingapp.mappers.UserMapper;
 import com.hackathon.bankingapp.repositories.UserRepository;
@@ -50,14 +50,14 @@ class UserRegistrationServiceTest {
         when(userRepository.existsByEmail(userRequest.getEmail())).thenReturn(false);
         when(userRepository.existsByPhoneNumber(userRequest.getPhoneNumber())).thenReturn(false);
 
-        UserRegistrationRes userRegistrationRes = new UserRegistrationRes();
+        UserInfoRes userRegistrationRes = new UserInfoRes();
         userRegistrationRes.setAccountNumber("19b332");
         when(userMapper.toEntity(userRequest)).thenReturn(new UserDTO());
         when(userMapper.toResponse(any())).thenReturn(userRegistrationRes);
 
         when(passwordEncoder.encode(userRequest.getPassword())).thenReturn("hashedPassword");
 
-        UserRegistrationRes result = userRegistrationService.registerUser(userRequest);
+        UserInfoRes result = userRegistrationService.registerUser(userRequest);
 
         assertNotNull(result);
         assertEquals("19b332", result.getAccountNumber());
