@@ -1,14 +1,12 @@
-package com.hackathon.bankingapp.application;
+package com.hackathon.bankingapp.Services;
 
-import com.hackathon.bankingapp.domain.exceptions.UserAlreadyExistsException;
-import com.hackathon.bankingapp.domain.mappers.UserMapper;
-import com.hackathon.bankingapp.infraestructure.api.req.UserRegistrationReq;
-import com.hackathon.bankingapp.infraestructure.api.res.UserRegistrationRes;
-import com.hackathon.bankingapp.infraestructure.data.repo.UserRepository;
+import com.hackathon.bankingapp.Exceptions.UserAlreadyExistsException;
+import com.hackathon.bankingapp.Mappers.UserMapper;
+import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
+import com.hackathon.bankingapp.Entities.api.res.UserRegistrationRes;
+import com.hackathon.bankingapp.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor

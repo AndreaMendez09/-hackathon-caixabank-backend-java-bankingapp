@@ -1,6 +1,5 @@
-package com.hackathon.bankingapp.infraestructure.api.req;
+package com.hackathon.bankingapp.Entities.api.req;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

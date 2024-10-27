@@ -1,4 +1,4 @@
-package com.hackathon.bankingapp.domain.dto;
+package com.hackathon.bankingapp.DTO;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,17 +6,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
+@Table(name = "users")
 public class UserDTO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "account_number", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID accountNumber;
 
     private String name;
 

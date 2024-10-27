@@ -1,4 +1,4 @@
-package com.hackathon.bankingapp.infraestructure.api.res;
+package com.hackathon.bankingapp.Entities.api.res;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
