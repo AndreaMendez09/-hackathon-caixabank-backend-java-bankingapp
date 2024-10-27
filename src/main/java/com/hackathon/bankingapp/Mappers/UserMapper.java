@@ -10,6 +10,6 @@ import org.mapstruct.Mapping;
 public interface UserMapper {
     @Mapping(target = "passwordHash", source = "password")
     UserDTO toEntity(UserRegistrationReq request);
-
+    @Mapping(target = "hashedPassword", source = "passwordHash")
     UserRegistrationRes toResponse(UserDTO user);
 }

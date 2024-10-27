@@ -1,4 +1,4 @@
-package com.hackathon.bankingapp.Controllers;
+package com.hackathon.bankingapp.controllers;
 
 import com.hackathon.bankingapp.Services.UserRegistrationService;
 import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
@@ -22,7 +22,7 @@ public class UserController {
     public ResponseEntity<?> register(@RequestBody UserRegistrationReq user) {
         try {
             var registeredUser = userRegistrationService.registerUser(user);
-            return ResponseEntity.ok().body(null);
+            return ResponseEntity.ok().body(registeredUser);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
