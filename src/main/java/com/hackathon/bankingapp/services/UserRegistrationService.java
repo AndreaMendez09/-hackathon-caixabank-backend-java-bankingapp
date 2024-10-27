@@ -1,19 +1,24 @@
 package com.hackathon.bankingapp.services;
 
+import com.hackathon.bankingapp.DTO.AccountDTO;
 import com.hackathon.bankingapp.exceptions.UserAlreadyExistsException;
 import com.hackathon.bankingapp.mappers.UserMapper;
 import com.hackathon.bankingapp.Entities.api.req.UserRegistrationReq;
 import com.hackathon.bankingapp.Entities.api.res.UserInfoRes;
+import com.hackathon.bankingapp.repositories.AccountRepository;
 import com.hackathon.bankingapp.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.math.BigDecimal;
 
 @Service
 @AllArgsConstructor
 public class UserRegistrationService {
 
     private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
@@ -39,6 +44,11 @@ public class UserRegistrationService {
         var userDto = userMapper.toEntity(request);
 
         userRepository.save(userDto);
+
+        var newAccount = new AccountDTO();
+        newAccount.setAccountNumber(userDto.getAccountNumber());
+        newAccount.setBalance(BigDecimal.valueOf(0));
+        accountRepository.save(newAccount);
 
         return userMapper.toResponse(userDto);
     }
